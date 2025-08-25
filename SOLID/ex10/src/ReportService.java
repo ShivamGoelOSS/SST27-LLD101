@@ -1,7 +1,7 @@
 public class ReportService {
-    void generate(){
-        ConsoleLogger logger = new ConsoleLogger();
-        logger.log("Generating daily report...");
+    GenerateService gen = new GenerateService();
+    void report(){
+        gen.generate();
         System.out.println("Report contents...");
     }
 }
