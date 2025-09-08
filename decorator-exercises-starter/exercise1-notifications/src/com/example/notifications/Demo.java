@@ -23,11 +23,20 @@ public class Demo {
         //      c) Email + Slack
         //      d) Email + WhatsApp + Slack
         //
-        // Example (after you implement):
-        // Notifier smsAndEmail = new SmsDecorator(base, "+91-99999-11111");
-        // smsAndEmail.notify("Build green ✅");
-        //
-        // Notifier full = new SlackDecorator(new WhatsAppDecorator(base, "user_wa"), "deployments");
-        // full.notify("Deployment completed 🚀");
+        // Email + SMS
+        Notifier emailSms = new SmsDecorator(base, "+91-99999-11111");
+        emailSms.notify("Build green ✅");
+
+        // Email + WhatsApp
+        Notifier emailWa = new WhatsAppDecorator(base, "user_wa");
+        emailWa.notify("Smoke tests passed");
+
+        // Email + Slack
+        Notifier emailSlack = new SlackDecorator(base, "deployments");
+        emailSlack.notify("Release tagged v1.2.3");
+
+        // Email + WhatsApp + Slack
+        Notifier waSlackEmail = new SlackDecorator(new WhatsAppDecorator(base, "user_wa"), "alerts");
+        waSlackEmail.notify("Prod healthy");
     }
 }

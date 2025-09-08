@@ -23,17 +23,22 @@ public class GameDemo {
         //      b) Add GoldenAura (sprite change + buffs)
         //      c) Remove GoldenAura by recomposing (rebuild chain without it)
         //
-        // Example (after you implement):
-        // Character buffed = new DamageBoost(new SpeedBoost(base, 3), 15);
-        // buffed.move();
-        // buffed.attack();
-        //
-        // Character shiny = new GoldenAura(buffed);
-        // shiny.move();
-        // shiny.attack();
-        //
-        // Character withoutAura = buffed; // removal by recomposition
-        // withoutAura.move();
-        // withoutAura.attack();
+        // Base + SpeedBoost + DamageBoost
+        Character buffed = new DamageBoost(new SpeedBoost(base, 3), 15);
+        System.out.println("--- Buffed (Speed+Damage) ---");
+        buffed.move();
+        buffed.attack();
+
+        // Add GoldenAura
+        Character shiny = new GoldenAura(buffed);
+        System.out.println("--- With GoldenAura ---");
+        shiny.move();
+        shiny.attack();
+
+        // Remove GoldenAura by recomposition
+        Character withoutAura = buffed;
+        System.out.println("--- Without GoldenAura ---");
+        withoutAura.move();
+        withoutAura.attack();
     }
 }
