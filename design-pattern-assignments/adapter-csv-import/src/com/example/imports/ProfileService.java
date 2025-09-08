@@ -3,11 +3,6 @@ package com.example.imports;
 import java.util.Objects;
 
 public class ProfileService {
-    // CSVProfileImporter csvProfileImporter = new CSVProfileImporter(new NaiveCsvReader());
-
-    CSVProfileImporter csvProfileImporter = new CSVProfileImporter();
-
-
     public void createProfile(String id, String email, String displayName) {
         Objects.requireNonNull(id, "id");
         Objects.requireNonNull(email, "email");

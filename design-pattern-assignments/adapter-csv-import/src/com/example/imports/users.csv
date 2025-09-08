@@ -1,0 +1,5 @@
+1,alice@example.com,Alice
+2,bademail,Bob
+3,bob@example.com,Bob
+,empty@example.com,NoId
+4,carol@example.com,Carol
