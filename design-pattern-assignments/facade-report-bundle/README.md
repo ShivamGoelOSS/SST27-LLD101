@@ -26,3 +26,10 @@ cd facade-report-bundle/src
 javac com/example/report/*.java
 java com.example.report.App
 ```
+
+## Solution
+- Problem: Client manually orchestrated JSON → zip → audit, leaking order and details.
+- Intent: Provide a single facade that hides subsystem complexity.
+- Key pieces: `ReportBundleFacade` (facade), `JsonWriter`, `Zipper`, `AuditLog`.
+- Flow: Facade writes JSON → zips to `baseName.zip` → logs success → returns zip path; `App` calls only the facade.
+- Run: `cd facade-report-bundle/src && javac com/example/report/*.java && java com.example.report.App`

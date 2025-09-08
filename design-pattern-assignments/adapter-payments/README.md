@@ -27,3 +27,10 @@ cd adapter-payments/src
 javac com/example/payments/*.java
 java com.example.payments.App
 ```
+
+## Solution
+- Problem: `OrderService` was coupled to mismatched SDKs with branching.
+- Intent: Decouple via a common `PaymentGateway` interface using adapters.
+- Key pieces: `PaymentGateway` (target), `FastPayAdapter`, `SafeCashAdapter`, `FastPayClient`, `SafeCashClient`.
+- Flow: `App` registers adapters in a `Map<String, PaymentGateway>` → `OrderService` routes by key → adapters translate to SDKs → return transaction IDs.
+- Run: `cd adapter-payments/src && javac com/example/payments/*.java && java com.example.payments.App`

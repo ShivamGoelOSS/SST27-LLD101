@@ -26,3 +26,10 @@ cd adapter-csv-import/src
 javac com/example/imports/*.java
 java com.example.imports.App users.csv
 ```
+
+## Solution
+- Problem: Only a low-level `NaiveCsvReader` returns `List<String[]>`, but the domain needs validated profiles.
+- Intent: Adapt raw CSV rows to domain calls with validation.
+- Key pieces: `CSVProfileImporter` (adapter), `NaiveCsvReader`, `ProfileService`, `ProfileImporter` (target interface).
+- Flow: Read rows → parse `id,email,displayName` → validate → call `createProfile` → count successes; skip invalid rows with a message.
+- Run: `cd adapter-csv-import/src && javac com/example/imports/*.java && java com.example.imports.App users.csv`

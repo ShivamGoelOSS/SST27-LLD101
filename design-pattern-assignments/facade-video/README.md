@@ -26,3 +26,10 @@ cd facade-video/src
 javac com/example/video/*.java
 java com.example.video.App
 ```
+
+## Solution
+- Problem: Client wired decode/filter/encode and couldn't use a legacy sharpen filter easily.
+- Intent: Facade sequences the pipeline; Adapter wraps legacy API.
+- Key pieces: `VideoPipelineFacade` (facade), `SharpenAdapter` (adapter), `LegacySharpen`, `Decoder`, `FilterEngine`, `Encoder`.
+- Flow: Facade: decode → optional grayscale → optional scale → optional sharpen (via adapter) → encode; `App` uses only the facade.
+- Run: `cd facade-video/src && javac com/example/video/*.java && java com.example.video.App`

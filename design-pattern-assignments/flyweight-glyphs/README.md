@@ -24,3 +24,10 @@ cd flyweight-glyphs/src
 javac com/example/render/*.java
 java com.example.render.App
 ```
+
+## Solution
+- Problem: Each `Glyph` stored style fields, causing many duplicate style objects.
+- Intent: Share intrinsic state (`TextStyle`) and keep extrinsic (`char`) per glyph (Flyweight).
+- Key pieces: `TextStyle` (immutable), `TextStyleFactory` (cache), `Glyph` (uses `TextStyle` + char), `Renderer`.
+- Flow: Renderer gets `TextStyle` from factory (key `"font|size|B/R"`) → constructs `Glyph` with char + style → cost unchanged, memory reduced.
+- Run: `cd flyweight-glyphs/src && javac com/example/render/*.java && java com.example.render.App`
